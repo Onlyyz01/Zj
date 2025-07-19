@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Sorry Babi 💔</title>
+  <link href="https://fonts.googleapis.com/css2?family=DynaPuff&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      font-family: 'DynaPuff', cursive;
+      background-color: #ffffff;
+      overflow: hidden;
+      touch-action: none;
+      user-select: none;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    img {
+      max-width: 90%;
+      max-height: 40vh;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      margin-top: 15px;
+      font-size: 2rem;
+      color: #ff4d4d;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    #typewriter {
+      margin-top: 15px;
+      font-size: 1.1rem;
+      color: #333;
+      min-height: 50px;
+      max-width: 90%;
+      white-space: pre-wrap;
+      overflow: hidden;
+      border-right: 2px solid #333;
+      animation: blinkCursor 0.8s infinite;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes blinkCursor {
+      0% { border-color: transparent; }
+      50% { border-color: #333; }
+      100% { border-color: transparent; }
+    }
+  </style>
+</head>
+<body>
+  <img src="https://media1.tenor.com/m/NqpgfoS_83gAAAAC/mochi-mochimochi.gif" alt="Sorry GIF" />
+  <h1>Babi, sorry na po</h1>
+  <div id="typewriter"></div>
+
+  <script>
+    const sentences = [
+      "Baby love hwuehuwewh, bati na po tayo please :((",
+      "Nag jojoke lng nman po ako love love",
+      "Hindi ko intensyon na mag tampo ikaw po",
+      "I was js trying to make some jokes po",
+      "yk nman baby, kuntento nako sayo po. I was js trying to make some sarcastic joke po love love.",
+      "Sorry na po babi, bati na po tayo please",
+      "Tell me what to do po para mag bati na tayo babi love love :((",
+      "I know po hindi siya funny, sorry baby love love :((",
+      "Bati na po tayo pwease? pwease baby",
+      "Hindi ako maghahanap ng ibang girl, ikaw lng po pramis",
+      "It was js some jokes po, sorry baby love love ko :((",
+      "Bati mo na po ako please, sorry na po",
+      "I love u baby, sorry po :((",
+      "I always find u pretty my baby",
+      "I will always choose uuuu",
+      "Nobody can be compared with your beauty",
+      "U're always prettier than anybody babiii",
+      "Please bati na tayo po :((",
+      "MWAAAA sorry babi",
+      // Add more 💌 here
+    ];
+
+    const typewriterEl = document.getElementById('typewriter');
+    let currentSentence = 0;
+
+    function typeSentence(sentence, callback) {
+      typewriterEl.textContent = '';
+      let charIndex = 0;
+
+      function typeChar() {
+        if (charIndex < sentence.length) {
+          typewriterEl.textContent += sentence.charAt(charIndex);
+          charIndex++;
+          setTimeout(typeChar, 50);
+        } else {
+          setTimeout(callback, 1000);
+        }
+      }
+
+      typeChar();
+    }
+
+    function playTypewriter() {
+      if (currentSentence < sentences.length) {
+        typeSentence(sentences[currentSentence], () => {
+          currentSentence++;
+          playTypewriter();
+        });
+      }
+    }
+
+    // Start typing after 4 seconds
+    setTimeout(() => {
+      playTypewriter();
+    }, 4000);
+  </script>
+</body>
+</html>
